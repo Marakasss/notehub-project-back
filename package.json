@@ -1,19 +1,22 @@
 {
   "name": "notehub-project-back",
   "version": "1.0.0",
-  "description": "",
+  "type": "module",
+  "description": "Simple note-taking application backend using Node.js, Express, and MongoDB.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**/*.js",
+    "start": "node ./src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Marakasss/notehub-project-back.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ihor Petriv",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Marakasss/notehub-project-back/issues"
   },
@@ -21,8 +24,28 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@eslint/json": "^0.14.0",
+    "@redocly/cli": "^2.11.1",
+    "@types/node": "^24.10.0",
     "eslint": "^9.39.1",
     "globals": "^16.5.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "pino-pretty": "^13.1.2"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^2.8.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "google-auth-library": "^10.5.0",
+    "handlebars": "^4.7.8",
+    "http-errors": "^2.0.0",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.3",
+    "nodemailer": "^7.0.10",
+    "pino-http": "^11.0.0",
+    "swagger-ui-express": "^5.0.1"
   }
 }
