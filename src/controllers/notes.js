@@ -1,6 +1,7 @@
 import createHttpError from 'http-errors';
 import {
   createNote,
+  deleteNotebyID,
   getAllNotes,
   getNoteByID,
   updateNote,
@@ -84,4 +85,18 @@ export const patchNoteController = async (req, res, next) => {
     message: `Successfully patched a note!`,
     data: result.note,
   });
+};
+
+//============================================================
+
+export const deleteNoteController = async (req, res, next) => {
+  const { noteId } = req.params;
+  const contact = await deleteNotebyID(noteId, req.user._id);
+
+  if (!contact) {
+    next(createHttpError(404, 'Note not found'));
+    return;
+  }
+
+  res.status(204).send();
 };

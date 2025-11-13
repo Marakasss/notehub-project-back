@@ -61,7 +61,8 @@ export const getAllNotes = async ({
     .find(query)
     .limit(perPage)
     .skip(skip)
-    .sort({ [sortBy]: sortOrder });
+    .sort({ [sortBy]: sortOrder })
+    .lean();
 
   const notesCount = await notesCollection.countDocuments(query);
 
@@ -74,7 +75,7 @@ export const getAllNotes = async ({
 //============================================================
 
 export const getNoteByID = async (id, userId) => {
-  const note = await notesCollection.findOne({ _id: id, userId });
+  const note = await notesCollection.findOne({ _id: id, userId }).lean();
   return note;
 };
 
@@ -103,4 +104,14 @@ export const updateNote = async (id, payLoad, userId, options = {}) => {
     note: updatedNote,
     isNew: options.upsert ? !updatedNote : false,
   };
+};
+
+//============================================================
+
+export const deleteNotebyID = async (id, userId) => {
+  const note = await notesCollection.findOneAndDelete({
+    _id: id,
+    userId,
+  });
+  return note;
 };

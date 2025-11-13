@@ -3,6 +3,7 @@ import { getNotesParamsValidationSchema } from '../validation/getNotesParamsVali
 import { validateQuery } from '../middlewares/validateQuery.js';
 import {
   createNoteController,
+  deleteNoteController,
   getNoteByIdController,
   getNotesController,
   patchNoteController,
@@ -41,5 +42,9 @@ router.patch(
   validateBody(updateNoteSchema),
   patchNoteController,
 );
+
+//============================================================
+
+router.delete('/:noteId', isValidId, deleteNoteController);
 
 export default router;
