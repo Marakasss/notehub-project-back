@@ -2,11 +2,15 @@ import { Router } from 'express';
 import { getNotesParamsValidationSchema } from '../validation/getNotesParamsValidationSchema.js';
 import { validateQuery } from '../middlewares/validateQuery.js';
 import {
+  createNoteController,
   getNoteByIdController,
   getNotesController,
+  patchNoteController,
 } from '../controllers/notes.js';
 import { authenticate } from '../middlewares/aunthenticate.js';
 import { isValidId } from '../middlewares/isValidId.js';
+import { validateBody } from '../middlewares/validateBody.js';
+import { createNoteSchema, updateNoteSchema } from '../validation/notes.js';
 
 const router = Router();
 
@@ -25,5 +29,17 @@ router.get(
 router.get('/:noteId', isValidId, getNoteByIdController);
 
 //============================================================
+
+router.post('/', validateBody(createNoteSchema), createNoteController);
+
+//============================================================
+
+router.patch(
+  '/:noteId',
+  isValidId,
+
+  validateBody(updateNoteSchema),
+  patchNoteController,
+);
 
 export default router;

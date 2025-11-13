@@ -1,5 +1,10 @@
 import createHttpError from 'http-errors';
-import { getAllNotes, getNoteByID } from '../services/notes.js';
+import {
+  createNote,
+  getAllNotes,
+  getNoteByID,
+  updateNote,
+} from '../services/notes.js';
 
 //============================================================
 
@@ -45,9 +50,38 @@ export const getNoteByIdController = async (req, res) => {
 
   res.status(200).json({
     status: 200,
-    message: `Successfully found contact with id ${noteId}!`,
+    message: `Successfully found note with id ${noteId}!`,
     data: note,
   });
 };
 
 //============================================================
+
+export const createNoteController = async (req, res) => {
+  const contact = await createNote({ ...req.body }, req.user._id);
+
+  res.status(201).json({
+    status: 201,
+    message: `Successfully created a note!`,
+    data: contact,
+  });
+};
+
+//============================================================
+
+export const patchNoteController = async (req, res, next) => {
+  const { noteId } = req.params;
+
+  const result = await updateNote(noteId, { ...req.body }, req.user._id);
+
+  if (!result) {
+    next(createHttpError(404, 'Note not found'));
+    return;
+  }
+
+  res.json({
+    status: 200,
+    message: `Successfully patched a note!`,
+    data: result.note,
+  });
+};

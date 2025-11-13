@@ -33,7 +33,7 @@ export const getAllNotes = async ({
   page,
   perPage,
   sortBy = 'createdAt',
-  sortOrder = 'desc',
+  sortOrder,
   filters = {},
   userId,
 }) => {
@@ -79,3 +79,28 @@ export const getNoteByID = async (id, userId) => {
 };
 
 //============================================================
+
+export const createNote = async (payload, userId) => {
+  const contact = await notesCollection.create({ ...payload, userId });
+  return contact;
+};
+
+//x===========================================================
+
+export const updateNote = async (id, payLoad, userId, options = {}) => {
+  const updatedNote = await notesCollection.findOneAndUpdate(
+    { _id: id, userId },
+    { $set: payLoad },
+    {
+      new: true,
+      upsert: options.upsert || false,
+    },
+  );
+
+  if (!updatedNote) return null;
+
+  return {
+    note: updatedNote,
+    isNew: options.upsert ? !updatedNote : false,
+  };
+};

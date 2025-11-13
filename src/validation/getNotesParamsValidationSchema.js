@@ -5,7 +5,7 @@ export const getNotesParamsValidationSchema = Joi.object({
   perPage: Joi.number().integer().min(1).max(100).default(10),
   search: Joi.string().allow('').default(''),
   sortBy: Joi.string().valid('createdAt', 'updatedAt').default('createdAt'),
-  sortOrder: Joi.string().valid('asc', 'desc').default('asc'),
+  sortOrder: Joi.string().valid('asc', 'desc').default('desc'),
   tag: Joi.string()
     .valid(
       'All',

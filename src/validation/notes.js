@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import { isValidObjectId } from 'mongoose';
 
-export const createContactSchema = Joi.object({
+export const createNoteSchema = Joi.object({
   title: Joi.string().min(3).max(50).required(),
 
   content: Joi.string().max(500),
@@ -27,4 +27,28 @@ export const createContactSchema = Joi.object({
     }
     return true;
   }),
+});
+
+
+export const updateNoteSchema = Joi.object({
+  title: Joi.string().min(3).max(50),
+
+  content: Joi.string().max(500),
+
+  tag: Joi.string()
+    .valid(
+      'All',
+      'Work',
+      'Personal',
+      'Meeting',
+      'Shopping',
+      'Ideas',
+      'Travel',
+      'Finance',
+      'Health',
+      'Important',
+      'Todo',
+    )
+    .optional(),
+  
 });
