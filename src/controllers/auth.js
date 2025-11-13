@@ -1,3 +1,4 @@
+import { notesCollection } from '../db/models/notes.js';
 import {
   loginOrSingupWithGoogle,
   loginUser,
@@ -9,11 +10,21 @@ import {
 } from '../services/auth.js';
 import { generateAuthUrl } from '../utils/googleOAuth.js';
 import { setupSession } from '../utils/setupSession.js';
+import fs from 'fs';
+import path from 'path';
 
 //-------------------------------------------------------------
 
+const demoNotesPath = path.resolve('./src/db/default/demo-notes.json');
+const demoNotes = JSON.parse(fs.readFileSync(demoNotesPath, 'utf-8'));
+
 export const registerUserController = async (req, res) => {
   const user = await registerUser(req.body);
+
+  const userDefaultNotes = demoNotes.map((note) => {
+    return { userId: user._id, ...note };
+  });
+  await notesCollection.insertMany(userDefaultNotes);
 
   res.status(201).json({
     status: 201,

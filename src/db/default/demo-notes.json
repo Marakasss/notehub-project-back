@@ -1,0 +1,306 @@
+[
+  {
+    "title": "Weekly goals",
+    "content": "Finish project report, update client on progress, and prepare slides for Friday's review meeting.",
+    "tag": "Work"
+  },
+  {
+    "title": "Code cleanup",
+    "content": "Refactor the utils folder, remove unused dependencies, and improve function naming consistency.",
+    "tag": "Work"
+  },
+  {
+    "title": "UI improvements",
+    "content": "Fix button alignment on mobile view and tweak color contrast for better accessibility.",
+    "tag": "Work"
+  },
+  {
+    "title": "Backend performance",
+    "content": "Investigate slow response times in the /notes API. Possible indexing issue in MongoDB.",
+    "tag": "Work"
+  },
+  {
+    "title": "Team update",
+    "content": "Send short progress summary in Slack before 5 PM. Keep it concise — no more than 3 bullet points.",
+    "tag": "Work"
+  },
+  {
+    "title": "Client feedback",
+    "content": "Review comments from the client about the dashboard redesign and plan next adjustments.",
+    "tag": "Work"
+  },
+  {
+    "title": "New feature draft",
+    "content": "Sketch an outline for the 'Save for later' option in the note editor.",
+    "tag": "Work"
+  },
+  {
+    "title": "Bug list",
+    "content": "1. Pagination jumps on reload. 2. Tag filter not persisting. 3. Modal closes unexpectedly.",
+    "tag": "Work"
+  },
+  {
+    "title": "Deployment prep",
+    "content": "Run full test suite before merge. Verify `.env` variables in production config.",
+    "tag": "Work"
+  },
+  {
+    "title": "API review",
+    "content": "Compare REST endpoints with GraphQL approach for the next version.",
+    "tag": "Work"
+  },
+  {
+    "title": "Documentation task",
+    "content": "Update README with new environment setup steps and screenshot examples.",
+    "tag": "Work"
+  },
+  {
+    "title": "Work summary",
+    "content": "Closed 7 tickets this week. Main wins: performance boost and cleaner UI.",
+    "tag": "Work"
+  },
+
+  {
+    "title": "Morning walk",
+    "content": "Went for a 30-minute walk before breakfast. Fresh air actually helps to think clearly.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Book to read",
+    "content": "‘Project Hail Mary’ by Andy Weir — perfect mix of science and humor.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Workout plan",
+    "content": "Push-ups, squats, and short runs. Keep it simple but consistent — at least 4 days a week.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Weekend plan",
+    "content": "Maybe go to the park, take some photos, and grab coffee with Alex.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Things to improve",
+    "content": "Sleep schedule. Less scrolling before bed, more reading instead.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Playlist update",
+    "content": "Add some lo-fi beats for study sessions. Chill and focus vibes only.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Budget check",
+    "content": "Review monthly expenses. Streaming services are getting out of hand.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Photo ideas",
+    "content": "Try shooting reflections on rainy days — looks cinematic.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Mindfulness note",
+    "content": "Take 5 minutes of silence after lunch. Helps reset focus.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Evening thoughts",
+    "content": "Feeling tired but satisfied. Progress is progress, no matter how small.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Small win",
+    "content": "Cooked dinner without burning anything. That’s a new record.",
+    "tag": "Personal"
+  },
+  {
+    "title": "Gratitude list",
+    "content": "Good coffee, helpful teammates, and sunny weather — that’s enough for today.",
+    "tag": "Personal"
+  },
+
+  {
+    "title": "Project sync-up",
+    "content": "Discussed API changes with backend team. Agreed to refactor endpoints next sprint.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "Design review",
+    "content": "Checked new mockups for mobile layout. Need better spacing in header area.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "Weekly standup",
+    "content": "Everyone’s on track except for analytics integration — waiting on credentials.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "Client call notes",
+    "content": "They liked the new dashboard style but asked for more customization options.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "Brainstorm session",
+    "content": "Lots of good ideas — dark mode toggle, smart tags, autosave improvements.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "Sprint planning",
+    "content": "Decided on 5 main tickets. Prioritize bug fixes first, then UX tweaks.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "Team retro",
+    "content": "Wins: better code review flow. Needs improvement: clearer issue descriptions.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "Tech talk summary",
+    "content": "Presentation on Next.js server components — useful insights on rendering strategy.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "HR meeting",
+    "content": "Discussed training budget and possible online courses for Q1.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "Onboarding session",
+    "content": "Introduced new teammate to repo structure and local dev setup.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "UX sync",
+    "content": "Alignment issue found in mobile header. Designer will fix by tomorrow.",
+    "tag": "Meeting"
+  },
+  {
+    "title": "Retrospective",
+    "content": "Overall positive sprint. Need fewer last-minute merges.",
+    "tag": "Meeting"
+  },
+
+  {
+    "title": "Grocery list",
+    "content": "Milk, bread, pasta, olive oil, apples, yogurt, and a bag of coffee beans.",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Hardware check",
+    "content": "Maybe get a new mouse — current one double-clicks on its own.",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Online order",
+    "content": "Track parcel from Amazon — expected delivery Thursday.",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Gift ideas",
+    "content": "Wireless earbuds or a small desk lamp — both practical and cool.",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Kitchen restock",
+    "content": "Out of rice and spices. Need to restock cumin and paprika.",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Clothes to buy",
+    "content": "Winter jacket, gloves, and one good pair of jeans.",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Tech wishlist",
+    "content": "External SSD, mechanical keyboard, and a good webcam.",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Groceries reminder",
+    "content": "Don’t forget coffee filters again — third time this month!",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Online sale",
+    "content": "Check discount codes before checkout — save that extra 10%.",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Appliances",
+    "content": "Need new kettle — current one sounds like a rocket taking off.",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Weekend supplies",
+    "content": "Snacks, soda, and maybe a new board game for Saturday night.",
+    "tag": "Shopping"
+  },
+  {
+    "title": "Subscription renewal",
+    "content": "Netflix renews tomorrow. Consider pausing — barely watching lately.",
+    "tag": "Shopping"
+  },
+
+  {
+    "title": "App concept",
+    "content": "A note app that turns short text ideas into structured outlines using AI.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Automation idea",
+    "content": "Script that automatically renames downloaded files based on content type.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Website concept",
+    "content": "Minimalist blog focused on developer productivity and tools.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Learning platform",
+    "content": "Micro-courses that teach one concept at a time, no fluff.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Productivity tool",
+    "content": "Browser extension that blocks distractions based on time of day.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Smart reminders",
+    "content": "Reminders that adjust timing based on your daily routine.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Travel assistant",
+    "content": "AI that builds itineraries based on your interests and energy levels.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Habit tracker",
+    "content": "Visual habit chains with streaks and positive reinforcement quotes.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Code snippets manager",
+    "content": "App for saving reusable code blocks with tags and syntax highlighting.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Gamified tasks",
+    "content": "Turn daily goals into a small RPG — earn points, unlock themes.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Study app",
+    "content": "Reminds you of previously learned topics right before you forget them.",
+    "tag": "Ideas"
+  },
+  {
+    "title": "Voice notes",
+    "content": "Voice-to-text app that understands context and tags automatically.",
+    "tag": "Ideas"
+  }
+]

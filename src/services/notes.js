@@ -32,41 +32,38 @@ const createPaginationMetadata = (page, perPage, totalItems) => {
 export const getAllNotes = async ({
   page,
   perPage,
-  sortBy,
-  sortOrder,
+  sortBy = 'createdAt',
+  sortOrder = 'desc',
   filters = {},
   userId,
 }) => {
-  if (!Number.isInteger(page) || page < 1) {
+  if (!Number.isInteger(page) || page < 1)
     throw createHttpError(400, 'Page must be a positive integer');
-  }
-  if (!Number.isInteger(perPage) || perPage < 1) {
+  if (!Number.isInteger(perPage) || perPage < 1)
     throw createHttpError(400, 'perPage must be a positive integer');
-  }
-  const skip = (page - 1) * perPage;
-  const filtersConditions = notesCollection.find();
 
-  if (filters.tag) {
-    filtersConditions.where('tag').equals(filters.tag);
+  const skip = (page - 1) * perPage;
+
+  const query = { userId };
+
+  if (filters.tag && filters.tag !== 'All') {
+    query.tag = filters.tag;
   }
 
   if (filters.search) {
-    filtersConditions.$or = [
+    query.$or = [
       { title: { $regex: filters.search, $options: 'i' } },
       { content: { $regex: filters.search, $options: 'i' } },
     ];
   }
 
   const notes = await notesCollection
-    .find({ userId })
-    .merge(filtersConditions)
+    .find(query)
     .limit(perPage)
     .skip(skip)
     .sort({ [sortBy]: sortOrder });
-  const notesCount = await notesCollection
-    .find({ userId })
-    .merge(filtersConditions)
-    .countDocuments();
+
+  const notesCount = await notesCollection.countDocuments(query);
 
   return {
     notes,
@@ -74,4 +71,11 @@ export const getAllNotes = async ({
   };
 };
 
-//--------------------------------------------------------------
+//============================================================
+
+export const getNoteByID = async (id, userId) => {
+  const note = await notesCollection.findOne({ _id: id, userId });
+  return note;
+};
+
+//============================================================

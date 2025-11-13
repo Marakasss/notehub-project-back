@@ -1,4 +1,7 @@
-import { getAllNotes } from '../services/notes.js';
+import createHttpError from 'http-errors';
+import { getAllNotes, getNoteByID } from '../services/notes.js';
+
+//============================================================
 
 const buildNotesFilter = (query) => {
   return {
@@ -15,7 +18,7 @@ export const getNotesController = async (req, res) => {
     sortBy: req.validatedQuery.sortBy,
     sortOrder: req.validatedQuery.sortOrder,
     filters: buildNotesFilter(req.validatedQuery),
-    // userId: req.user._id,
+    userId: req.user._id,
   });
 
   const message = notes.notes.length
@@ -29,3 +32,22 @@ export const getNotesController = async (req, res) => {
   });
   return;
 };
+
+//============================================================
+
+export const getNoteByIdController = async (req, res) => {
+  const { noteId } = req.params;
+  const note = await getNoteByID(noteId, req.user._id);
+
+  if (!note) {
+    throw createHttpError(404, 'Contact not found');
+  }
+
+  res.status(200).json({
+    status: 200,
+    message: `Successfully found contact with id ${noteId}!`,
+    data: note,
+  });
+};
+
+//============================================================

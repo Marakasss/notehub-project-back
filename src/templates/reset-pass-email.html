@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset Password</title>
+  </head>
+
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+      font-family: Arial, sans-serif;
+    "
+  >
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td align="center" style="padding: 40px 0">
+          <!-- Card -->
+          <table
+            role="presentation"
+            cellpadding="0"
+            cellspacing="0"
+            width="100%"
+            style="
+              max-width: 600px;
+              background: #ffffff;
+              border-radius: 10px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            "
+          >
+            <tr>
+              <td style="padding: 40px; text-align: center">
+                <h1 style="margin: 0; font-size: 24px; color: #1a1a1a">
+                  Hello, {{name}} 👋
+                </h1>
+                <p style="margin: 20px 0; font-size: 16px; color: #444">
+                  We received a request to reset your password. Click the button
+                  below to continue:
+                </p>
+
+                <!-- Button -->
+                <a
+                  href="{{link}}"
+                  style="
+                    display: inline-block;
+                    padding: 14px 28px;
+                    background-color: #2563eb;
+                    color: #ffffff;
+                    font-size: 16px;
+                    text-decoration: none;
+                    border-radius: 6px;
+                    font-weight: bold;
+                  "
+                >
+                  Reset Password
+                </a>
+
+                <p style="margin: 30px 0 10px; font-size: 14px; color: #666">
+                  If you did not request a password reset, please ignore this
+                  email.
+                </p>
+                <p style="margin: 0; font-size: 12px; color: #999">
+                  This link will expire in 5 minutes for your security.
+                </p>
+              </td>
+            </tr>
+          </table>
+          <!-- End Card -->
+
+          <!-- Footer -->
+          <p style="margin-top: 20px; font-size: 12px; color: #aaa">
+            © 2025 YourCompany. All rights reserved.
+          </p>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
