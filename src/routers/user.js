@@ -21,3 +21,5 @@ router.patch(
   validateBody(updateUserSchema),
   patchUserInfoController,
 );
+
+export default router;
