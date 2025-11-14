@@ -1,10 +1,10 @@
 // services/users.js
-import { SessionCollection } from '../db/models/session.js';
+import { SessionColection } from '../db/models/session.js';
 import { UsersCollection } from '../db/models/users.js';
 import createHttpError from 'http-errors';
 
 export const getCurrentUser = async (sessionId) => {
-  const session = await SessionCollection.findById(sessionId);
+  const session = await SessionColection.findById(sessionId);
   if (!session) {
     throw createHttpError(401, 'Session expired or invalid');
   }
@@ -18,7 +18,7 @@ export const getCurrentUser = async (sessionId) => {
 };
 
 export const updateUserInfo = async (sessionId, payload, options = {}) => {
-  const session = await SessionCollection.findById(sessionId);
+  const session = await SessionColection.findById(sessionId);
   if (!session) {
     throw createHttpError(401, 'Session expired or invalid');
   }
