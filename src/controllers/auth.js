@@ -71,6 +71,13 @@ export const refreshUserSessionController = async (req, res) => {
     refreshToken: req.cookies.refreshToken,
   });
 
+  if (!session) {
+    return res.status(401).json({
+      status: 401,
+      message: 'Invalid refresh token or session expired',
+    });
+  }
+
   setupSession(res, session);
 
   res.json({
