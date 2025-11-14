@@ -13,7 +13,7 @@ import { setupSession } from '../utils/setupSession.js';
 import fs from 'fs';
 import path from 'path';
 
-//-------------------------------------------------------------
+//==============================================================
 
 const demoNotesPath = path.resolve('./src/db/default/demo-notes.json');
 const demoNotes = JSON.parse(fs.readFileSync(demoNotesPath, 'utf-8'));
@@ -33,7 +33,7 @@ export const registerUserController = async (req, res) => {
   });
 };
 
-//-------------------------------------------------------------
+//==============================================================
 
 export const loginUserController = async (req, res) => {
   const session = await loginUser(req.body);
@@ -49,7 +49,7 @@ export const loginUserController = async (req, res) => {
   });
 };
 
-//-------------------------------------------------------------
+//==============================================================
 
 export const logOutUserController = async (req, res) => {
   if (req.cookies.sessionId) {
@@ -63,7 +63,7 @@ export const logOutUserController = async (req, res) => {
   return;
 };
 
-//-------------------------------------------------------------
+//==============================================================
 
 export const refreshUserSessionController = async (req, res) => {
   const session = await refreshUserSession({
@@ -82,7 +82,7 @@ export const refreshUserSessionController = async (req, res) => {
   });
 };
 
-//-------------------------------------------------------------
+//==============================================================
 
 export const requestResetEmailController = async (req, res) => {
   await requestResetToken(req.body.email);
@@ -94,7 +94,7 @@ export const requestResetEmailController = async (req, res) => {
   });
 };
 
-//-------------------------------------------------------------
+//==============================================================
 
 export const resetPasswordController = async (req, res) => {
   await resetPassword(req.body);
@@ -105,7 +105,7 @@ export const resetPasswordController = async (req, res) => {
   });
 };
 
-//-------------------------------------------------------------
+//==============================================================
 
 export const getGoogleOAuthUrlController = async (req, res) => {
   const url = generateAuthUrl();
@@ -117,7 +117,7 @@ export const getGoogleOAuthUrlController = async (req, res) => {
   });
 };
 
-//-------------------------------------------------------------
+//==============================================================
 
 export const loginOrSingupWithGoogleController = async (req, res) => {
   const session = await loginOrSingupWithGoogle(req.body.code);
