@@ -46,7 +46,7 @@ export const getNoteByIdController = async (req, res) => {
   const note = await getNoteByID(noteId, req.user._id);
 
   if (!note) {
-    throw createHttpError(404, 'Contact not found');
+    throw createHttpError(404, 'Note not found');
   }
 
   res.status(200).json({
@@ -59,12 +59,12 @@ export const getNoteByIdController = async (req, res) => {
 //============================================================
 
 export const createNoteController = async (req, res) => {
-  const contact = await createNote({ ...req.body }, req.user._id);
+  const note = await createNote({ ...req.body }, req.user._id);
 
   res.status(201).json({
     status: 201,
     message: `Successfully created a note!`,
-    data: contact,
+    data: note,
   });
 };
 
@@ -91,12 +91,16 @@ export const patchNoteController = async (req, res, next) => {
 
 export const deleteNoteController = async (req, res, next) => {
   const { noteId } = req.params;
-  const contact = await deleteNotebyID(noteId, req.user._id);
+  const note = await deleteNotebyID(noteId, req.user._id);
 
-  if (!contact) {
+  if (!note) {
     next(createHttpError(404, 'Note not found'));
     return;
   }
 
-  res.status(204).send();
+  res.json({
+    status: 200,
+    message: `Successfully deleted a note!`,
+    data: note,
+  });
 };

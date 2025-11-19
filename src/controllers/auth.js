@@ -1,3 +1,4 @@
+import { demoNotes } from '../constants/index.js';
 import { notesCollection } from '../db/models/notes.js';
 import {
   loginOrSingupWithGoogle,
@@ -10,21 +11,20 @@ import {
 } from '../services/auth.js';
 import { generateAuthUrl } from '../utils/googleOAuth.js';
 import { setupSession } from '../utils/setupSession.js';
-import fs from 'fs';
-import path from 'path';
 
 //==============================================================
 
-const demoNotesPath = path.resolve('./src/db/default/demo-notes.json');
-const demoNotes = JSON.parse(fs.readFileSync(demoNotesPath, 'utf-8'));
+
 
 export const registerUserController = async (req, res) => {
-  const user = await registerUser(req.body);
+  const { user, session } = await registerUser(req.body);
 
   const userDefaultNotes = demoNotes.map((note) => {
     return { userId: user._id, ...note };
   });
   await notesCollection.insertMany(userDefaultNotes);
+
+  setupSession(res, session);
 
   res.status(201).json({
     status: 201,
@@ -43,9 +43,6 @@ export const loginUserController = async (req, res) => {
   res.json({
     status: 200,
     message: 'Successfully logged in an user!',
-    data: {
-      accessToken: session.accessToken,
-    },
   });
 };
 
@@ -83,9 +80,6 @@ export const refreshUserSessionController = async (req, res) => {
   res.json({
     status: 200,
     message: 'Successfully refreshed a session!',
-    data: {
-      accessToken: session.accessToken,
-    },
   });
 };
 
@@ -133,8 +127,5 @@ export const loginOrSingupWithGoogleController = async (req, res) => {
   res.json({
     status: 200,
     message: 'Successfully logged in via Google OAuth!',
-    data: {
-      accessToken: session.accessToken,
-    },
   });
 };

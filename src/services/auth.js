@@ -5,6 +5,7 @@ import { UsersCollection } from '../db/models/users.js';
 import createHttpError from 'http-errors';
 import { SessionColection } from '../db/models/session.js';
 import {
+  demoNotes,
   FIFTEEN_MINUTES,
   SMTP,
   TEMPLATES_DIR,
@@ -19,15 +20,32 @@ import {
   getFullNameFromGoogleTokenPayload,
   validateCode,
 } from '../utils/googleOAuth.js';
+import { notesCollection } from '../db/models/notes.js';
 
 //=====================================================================
 
 export const registerUser = async (payload) => {
-  const user = await UsersCollection.findOne({ email: payload.email });
-  if (user) throw createHttpError(409, 'Email in use');
+  const isUser = await UsersCollection.findOne({ email: payload.email });
+  if (isUser) throw createHttpError(409, 'Email in use');
 
   const encryptedPass = await bcrypt.hash(payload.password, 10);
-  return await UsersCollection.create({ ...payload, password: encryptedPass });
+
+  const accessToken = randomBytes(30).toString('base64');
+  const refreshToken = randomBytes(30).toString('base64');
+  const user = await UsersCollection.create({
+    username: payload.email,
+    ...payload,
+    password: encryptedPass,
+  });
+
+  const session = await SessionColection.create({
+    userId: user._id,
+    accessToken,
+    refreshToken,
+    accessTokenValidUntil: new Date(Date.now() + FIFTEEN_MINUTES),
+    refreshTokenValidUntil: new Date(Date.now() + THIRTY_DAYS),
+  });
+  return { user, session };
 };
 
 //---------------------------------------------------------------------------
@@ -80,6 +98,8 @@ export const refreshUserSession = async ({ sessionId, refreshToken }) => {
   });
 
   if (!session) {
+    console.log('Session not found');
+
     throw createHttpError(401, 'Session not found');
   }
 
@@ -87,6 +107,7 @@ export const refreshUserSession = async ({ sessionId, refreshToken }) => {
     new Date() > new Date(session.refreshTokenValidUntil);
 
   if (isSessionTokenExpired) {
+    console.log('Session token expired');
     throw createHttpError(401, 'Session token expired');
   }
 
@@ -186,12 +207,17 @@ export const loginOrSingupWithGoogle = async (code) => {
     const password = await bcrypt.hash(randomBytes(10), 10);
     user = await UsersCollection.create({
       email: payload.email,
-      name: getFullNameFromGoogleTokenPayload(payload),
+      username: getFullNameFromGoogleTokenPayload(payload),
       password,
     });
   }
 
   const newSession = createSession();
+
+  const userDefaultNotes = demoNotes.map((note) => {
+    return { userId: user._id, ...note };
+  });
+  await notesCollection.insertMany(userDefaultNotes);
 
   return await SessionColection.create({
     userId: user._id,
