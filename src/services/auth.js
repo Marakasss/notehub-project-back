@@ -210,14 +210,15 @@ export const loginOrSingupWithGoogle = async (code) => {
       username: getFullNameFromGoogleTokenPayload(payload),
       password,
     });
+
+    const userDefaultNotes = demoNotes.map((note) => {
+      return { userId: user._id, ...note };
+    });
+    await notesCollection.insertMany(userDefaultNotes);
   }
 
+  await SessionColection.deleteMany({ userId: user._id });
   const newSession = createSession();
-
-  const userDefaultNotes = demoNotes.map((note) => {
-    return { userId: user._id, ...note };
-  });
-  await notesCollection.insertMany(userDefaultNotes);
 
   return await SessionColection.create({
     userId: user._id,
