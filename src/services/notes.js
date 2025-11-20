@@ -82,8 +82,8 @@ export const getNoteByID = async (id, userId) => {
 //============================================================
 
 export const createNote = async (payload, userId) => {
-  const contact = await notesCollection.create({ ...payload, userId });
-  return contact;
+  const note = await notesCollection.create({ ...payload, userId });
+  return note;
 };
 
 //x===========================================================
