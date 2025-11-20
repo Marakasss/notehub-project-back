@@ -17,7 +17,8 @@ const UsersSchema = new Schema(
     },
     avatar: {
       type: String,
-      default: 'https://ac.goit.global/fullstack/react/default-avatar.jpg',
+      default:
+        'https://res.cloudinary.com/dicmxxz0b/image/upload/v1763622294/default-avatar_z4kzeh.png',
     },
   },
   {
