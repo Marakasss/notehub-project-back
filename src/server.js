@@ -38,6 +38,10 @@ export default function setupServer() {
     });
   });
 
+  app.get('/health', (req, res) => {
+    res.status(200).send('ok');
+  });
+
   app.use(router);
 
   app.use(notFoundHandler);
